@@ -25,16 +25,17 @@ defineProps({storages: Array});
                         <table class="w-full table-auto border-collapse">
                             <thead>
                             <tr>
-                                <th class="px-4 py-2 text-left">ID</th>
                                 <th class="px-4 py-2 text-left">Name</th>
                                 <th class="px-4 py-2 text-left">Beschreibung</th>
                             </tr>
                             </thead>
                             <tbody class="[&>*:nth-child(odd)]:bg-gray-100">
                             <tr v-for="storage in storages" :key="storage.id">
-                                <td class="border px-4 py-2">{{ storage.id }}</td>
                                 <td class="border px-4 py-2">{{ storage.name }}</td>
                                 <td class="border px-4 py-2">{{ storage.description }}</td>
+                                <td class="border px-4 py-2">
+                                    <Link :href="`/lagerverwaltung/${storage.id}/edit`" class="px-2 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Edit</Link>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
