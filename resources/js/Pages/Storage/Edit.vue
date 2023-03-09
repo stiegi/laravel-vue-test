@@ -23,10 +23,10 @@ const form = useForm({
                 <div
                     class="relative flex text-gray-800 antialiased flex-col justify-center overflow-hidden py-2 sm:py-4">
                     <div class="relative py-1 w-96 mx-auto text-center">
-                        <span class="text-2xl font-light ">Neues Lager erstellen</span>
+                        <span class="text-2xl font-light ">Lager bearbeiten</span>
                         <div class="mt-4 bg-white shadow-md rounded-lg text-left">
                             <div class="h-2 bg-indigo-500 rounded-t-md"></div>
-                            <form class="px-8 py-6" @submit.prevent="form.put(`/lagerverwaltung/${props.storage.id}`)">
+                            <form class="px-8 py-6" @submit.prevent="form.put(`/lager/${props.storage.id}`)">
                                 <input type="hidden" v-model="form.id"/>
                                 <label class="block font-semibold"> Name </label>
                                 <input type="text" v-model="form.name"
@@ -39,7 +39,7 @@ const form = useForm({
                                 </p>
 
                                 <div class="flex justify-between  p-2 mt-6">
-                                    <Link href="/lagerverwaltung"
+                                    <Link href="/lager"
                                           class="text-center w-32 m1 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded">
                                         Abbrechen
                                     </Link>

@@ -33,7 +33,10 @@ const showingNavigationDropdown = ref(false);
                                     Dashboard
                                 </NavLink>
                                 <NavLink :href="route('storage.index')" :active="route().current('storage.index')">
-                                    Lagerverwaltung
+                                    Lager
+                                </NavLink>
+                                <NavLink :href="route('product.index')" :active="route().current('product.index')">
+                                    Produkte
                                 </NavLink>
                             </div>
                         </div>

@@ -27,7 +27,7 @@ defineProps({errors: Object});
                         <span class="text-2xl font-light ">Neues Lager erstellen</span>
                         <div class="mt-4 bg-white shadow-md rounded-lg text-left">
                             <div class="h-2 bg-indigo-500 rounded-t-md"></div>
-                            <form class="px-8 py-6" @submit.prevent="form.post('/lagerverwaltung')">
+                            <form class="px-8 py-6" @submit.prevent="form.post('/lager')">
                                 <label class="block font-semibold"> Name </label>
                                 <input type="text" v-model="form.name"
                                        class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
@@ -39,7 +39,7 @@ defineProps({errors: Object});
                                 </p>
 
                                 <div class="flex justify-between  p-2 mt-6">
-                                    <Link href="/lagerverwaltung"
+                                    <Link href="/lager"
                                           class="text-center w-32 m1 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded">
                                         Abbrechen
                                     </Link>

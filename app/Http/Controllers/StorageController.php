@@ -27,7 +27,7 @@ class StorageController extends Controller
         $request->validate([
             'name' => 'required|unique:App\Models\Storage,name'
         ]);
-        Storage::create([
+        $a = Storage::create([
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
@@ -46,10 +46,19 @@ class StorageController extends Controller
         return to_route('storage.index');
     }
 
+    public function products(Storage $storage): Response
+    {
+        return Inertia::render('Storage/Products', [
+            'storage' => $storage,
+            'products' => $storage->products()->get()
+        ]);
+    }
+
     public function edit(Storage $storage): Response
     {
         return Inertia::render('Storage/Edit', [
             'storage' => $storage
+           // 'products' => $storage->products()->get()
         ]);
     }
 }

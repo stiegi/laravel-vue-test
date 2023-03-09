@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use \App\Http\Controllers\ProductController;
 use App\Http\Controllers\StorageController;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,11 +32,14 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/lagerverwaltung', [StorageController::class, 'index'])->middleware(['auth', 'verified'])->name('storage.index');
-Route::get('/lagerverwaltung/neu', [StorageController::class, 'create'])->middleware(['auth', 'verified'])->name('storage.create');
-Route::get('/lagerverwaltung/{storage}/edit', [StorageController::class, 'edit'])->middleware(['auth', 'verified'])->name('storage.edit');
-Route::post('/lagerverwaltung', [StorageController::class, 'store'])->middleware(['auth', 'verified'])->name('storage.store');
-Route::put('/lagerverwaltung/{storage}', [StorageController::class, 'update'])->middleware(['auth', 'verified'])->name('storage.update');
+Route::get('/lager', [StorageController::class, 'index'])->middleware(['auth', 'verified'])->name('storage.index');
+Route::get('/lager/neu', [StorageController::class, 'create'])->middleware(['auth', 'verified'])->name('storage.create');
+Route::get('/lager/{storage}/edit', [StorageController::class, 'edit'])->middleware(['auth', 'verified'])->name('storage.edit');
+Route::post('/lager', [StorageController::class, 'store'])->middleware(['auth', 'verified'])->name('storage.store');
+Route::put('/lager/{storage}', [StorageController::class, 'update'])->middleware(['auth', 'verified'])->name('storage.update');
+Route::get('/lager/{storage}', [StorageController::class, 'products'])->middleware(['auth', 'verified'])->name('storage.products');
+
+Route::get('/produkte', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('product.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
