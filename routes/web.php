@@ -31,6 +31,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/lagerverwaltung', [StorageController::class, 'index'])->middleware(['auth', 'verified'])->name('storage.index');
+Route::get('/lagerverwaltung/neu', [StorageController::class, 'create'])->middleware(['auth', 'verified'])->name('storage.create');
+Route::post('/lagerverwaltung', [StorageController::class, 'store'])->middleware(['auth', 'verified'])->name('storage.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
