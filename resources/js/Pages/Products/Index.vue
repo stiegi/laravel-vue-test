@@ -19,7 +19,7 @@ defineProps({products: Object});
 
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-start m-2 p-2">
-                    <Link href="/lager/neu" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Neues Produkt erstellen</Link>
+                    <Link href="/produkte/neu" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Neues Produkt erstellen</Link>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
@@ -43,7 +43,7 @@ defineProps({products: Object});
                                 <td class="border px-4 py-2">{{ product.amount }}</td>
                                 <td class="border px-4 py-2">{{ product.price }}€</td>
                                 <td class="border px-4 py-2">
-                                    <Link :href="`/lager/${product.id}/edit`" class="px-2 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Edit</Link>
+                                    <Link :href="`/produkte/${product.id}/edit`" class="px-2 py-1 bg-indigo-500 hover:bg-indigo-600 text-white rounded">Edit</Link>
                                 </td>
                             </tr>
                             </tbody>

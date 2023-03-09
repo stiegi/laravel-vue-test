@@ -7,6 +7,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use \App\Models\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard', ["storages" => Storage::all()]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/lager', [StorageController::class, 'index'])->middleware(['auth', 'verified'])->name('storage.index');
@@ -40,6 +41,11 @@ Route::put('/lager/{storage}', [StorageController::class, 'update'])->middleware
 Route::get('/lager/{storage}', [StorageController::class, 'products'])->middleware(['auth', 'verified'])->name('storage.products');
 
 Route::get('/produkte', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('product.index');
+Route::get('/produkte/{product}/edit', [ProductController::class, 'edit'])->middleware(['auth', 'verified'])->name('product.edit');
+Route::post('/produkte', [ProductController::class, 'store'])->middleware(['auth', 'verified'])->name('product.store');
+Route::put('/produkte/{product}', [ProductController::class, 'update'])->middleware(['auth', 'verified'])->name('product.update');
+Route::delete('/produkte/{product}', [ProductController::class, 'delete'])->middleware(['auth', 'verified'])->name('product.delete');
+Route::get('/produkte/neu', [ProductController::class, 'create'])->middleware(['auth', 'verified'])->name('product.create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
